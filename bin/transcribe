@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+import sys
+import os
+import configparser
+base_path = os.path.dirname(os.path.abspath(__file__)) + '/../'
+sys.path.insert(1, base_path + 'transcribe')
+import transcribe
+
+def main():
+    config = configparser.ConfigParser()
+    config.read(base_path + 'config.ini')
+    transcribe.transcribe(config)
+
+if __name__ == "__main__":
+    main()
