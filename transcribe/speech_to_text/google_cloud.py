@@ -1,5 +1,4 @@
 from google.cloud import speech_v1
-from google.cloud.speech_v1 import enums
 from google.cloud import storage
 
 class GoogleCloud:
@@ -33,7 +32,7 @@ class GoogleCloud:
             "enable_automatic_punctuation": True
         }
         audio = {"uri": self.getRemoteUri()}
-        operation = self.speech_client.long_running_recognize(config, audio)
+        operation = self.speech_client.long_running_recognize(config=config, audio=audio)
         response = operation.result()
         content = ' '.join(map(lambda result: result.alternatives[0].transcript, response.results))
         self.deleteRemote()
